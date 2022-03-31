@@ -1,9 +1,12 @@
 package fp.lexico.test;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import fp.lexico.LectorTexto;
+import fp.lexico.Lexico;
 
 public class TestLexico {
 
@@ -18,7 +21,24 @@ public class TestLexico {
 		lector2.agregaFichero("./res/platero.txt", StandardCharsets.UTF_8);
 		System.out.println(lector2.getPalabras().subList(0,100));
 		
-		//TODO Probar aquí el tipo Lexico
+
+//		List<String> palabras = List.of("Hola", "Adios");
+//		Lexico l = new Lexico(palabras);
+//		System.out.println(l);
+//		SortedSet<String> ss = l.getPalabras();
+//		ss.add("HOLA");
+		
+		Lexico l1 = new Lexico(lector1.getPalabras());
+		System.out.println("Num palabras Lazarillo " + l1.getTotalPalabras());
+		
+		Lexico l2 = new Lexico(lector2.getPalabras());
+		System.out.println("Num palabras Lazarillo " + l2.getTotalPalabras());
+		
+		System.out.println("Las palabras comunes a ambos lexicos son ");
+		Set<String> c = l1.getPalabrasComunes(l2);
+		for (String palabra: c) {
+			System.out.println(palabra);
+		}
 		
 	}
 
